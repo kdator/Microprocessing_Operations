@@ -1,6 +1,6 @@
  `timescale 1ns / 1ps
 
-module task_tb();
+module processor_tb();
 
 reg           clk_i;
 reg    [9:0]  switches_i;
