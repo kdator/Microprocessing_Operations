@@ -17,24 +17,24 @@
 );
 
 	integer i; // переменная для сброса регистров в цикле.
-	reg [31:0] RAM [0:31]; // 32 регистра по 32 бита каждый.
+	reg [31:0] REGISTERS [0:31]; // 32 регистра по 32 бита каждый.
 
-	// считываем данные из RAM на выход.
-	assign rd1_o = (addr1_i != 32'd0) ?  RAM[addr1_i] : 32'd0;
-	assign rd2_o = (addr2_i != 32'd0) ?  RAM[addr2_i] : 32'd0;
+	// считываем данные из REGISTERS на выход.
+	assign rd1_o = (addr1_i != 32'd0) ?  REGISTERS[addr1_i] : 32'd0;
+	assign rd2_o = (addr2_i != 32'd0) ?  REGISTERS[addr2_i] : 32'd0;
 
 	always @ (posedge clk_i)
 		begin
 			if (we_i)
 				begin
 					if (wd_addr_i != 5'd0) // убеждаемся, что не пишем в константный ноль.
-						RAM[wd_addr_i] <= wd_i;
+						REGISTERS[wd_addr_i] <= wd_i;
 				end
 			if (reset_i)
 				begin
 					for (i = 0; i < 32; i = i + 1)
 						begin
-							RAM[i] <= 32'd0;
+							REGISTERS[i] <= 32'd0;
 						end
 				end
 		end
