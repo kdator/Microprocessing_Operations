@@ -6,7 +6,7 @@ __start:
 		lw x8, 0(x7)       #                  || Load a
 		addi x9, x0, 0     # x11 <- 0         || Make reg 11 accumulator of result
 		addi x10, x0, 1    # x12 <- 0x1       || Put 1 const to 12 reg for compearations
-		call factorial     # mult(a, b)       || Calling function
+		call factorial     # factorial(a)     || Calling function
 return:
 		addi x16, x0, 12    # output result   || Define result address
 		sw x11, 0(x16)      # output result   || Writing result to memory
